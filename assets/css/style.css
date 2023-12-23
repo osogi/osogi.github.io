@@ -812,12 +812,15 @@ a:hover {
 /*--------------------------------------------------------------
 # Services
 --------------------------------------------------------------*/
+
 .service-box {
+  display: flex; 
+  flex-direction: column;
   background-color: var(--color-back-overlay);
   padding: 2.5rem 1.3rem;
   border-radius: 1rem;
-  margin-bottom: 3rem;
   text-align: center;
+  height: 100%;
 }
 
 .service-box:hover .ico-circle {
@@ -844,6 +847,12 @@ a:hover {
   font-size: 40px;
 }
 
+.service-box .service-content{
+  display: flex; 
+  flex-direction: column;
+  flex-grow: 1;
+}
+
 .service-box .s-title {
   font-size: 1.4rem;
   text-transform: uppercase;
@@ -853,6 +862,11 @@ a:hover {
 
 .service-box .s-description {
   color: var(--color-text);
+  flex-grow: 1;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  /* align-self: stretch; */
 }
 
 /*--------------------------------------------------------------
@@ -923,7 +937,7 @@ a:hover {
 
 .work-content .w-like {
   font-size: 2.5rem;
-  color:var(--color-2-main);
+  color: var(--color-2-main);
   float: right;
 }
 
@@ -1053,16 +1067,34 @@ footer .credits a {
 }
 
 
-.highlight:before{ content:"{"; margin-right:5px; color: var(--color-headers); font-weight:700;}
-.highlight:after{ content:"}"; margin-left:5px; color: var(--color-headers); font-weight:700;}
-.highlight.multicolor:before{ color:var(--color-1-main);}
-.highlight.multicolor:after{ color:var(--color-2-main);}
+.highlight:before {
+  content:"{";
+  margin-right: 5px;
+  color: var(--color-headers);
+  font-weight: 700;
+}
+
+.highlight:after {
+  content: "}";
+  margin-left: 5px;
+  color: var(--color-headers);
+  font-weight: 700;
+}
+
+.highlight.multicolor:before {
+  color: var(--color-1-main);
+}
+
+.highlight.multicolor:after {
+  color: var(--color-2-main);
+}
 
 .first-blue::first-letter {
-  color:var(--color-2-main);
+  color: var(--color-2-main);
 }
+
 .first-orange::first-letter {
-  color:var(--color-1-main);
+  color: var(--color-1-main);
 }
 
 .gradient-text {
