@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy-happy!</title>
+<style>
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* justify-content: center; */
+        height: 100vh;
+        margin: 0;
+    }
+    .gif-container {
+        max-width: 400px;
+        margin: 20px;
+    }
+    .play-button {
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        background-color: #66085e;
+        color: white;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+    m[i].l=1*new Date();
+    for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+ 
+    ym(97538367, "init", {
+         clickmap:true,
+         trackLinks:true,
+         accurateTrackBounce:true,
+         webvisor:true
+    });
+ </script>
+ <noscript><div><img src="https://mc.yandex.ru/watch/97538367" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+ <!-- /Yandex.Metrika counter -->
+
+<button id="play-button" class="play-button">🎉 Happy-happy 🎉</button>
+<div id="gif-container" class="gif-container">
+    <!-- Изображение GIF будет загружаться динамически -->
+</div>
+
+<audio id="myAudio" src="https://www.myinstants.com/media/sounds/happy-happy-happy-cat.mp3"></audio>
+
+<script>
+    document.getElementById('play-button').onclick = function() {
+        // Проигрываем песню
+        document.getElementById('myAudio').load();
+        document.getElementById('myAudio').play();
+        
+        // Загружаем и отображаем GIF
+        var gifContainer = document.getElementById('gif-container');
+        var gifImage = document.createElement('img');
+        gifImage.src = 'https://www.icegif.com/wp-content/uploads/2023/06/icegif-948.gif'; // Замените на ссылку на ваше GIF-изображение
+        gifImage.style.maxWidth = '100%';
+        gifContainer.innerHTML = ''; // Очищаем контейнер перед добавлением нового изображения
+        gifContainer.appendChild(gifImage);
+    };
+</script>
+
+</body>
+</html>
