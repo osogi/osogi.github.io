@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy-happy!</title>
+<title>GIF & Sound</title>
 <style>
     body {
         display: flex;
@@ -22,7 +22,7 @@
         font-size: 16px;
         border: none;
         background-color: #66085e;
-        color: white;
+        color: #ffffff;
         cursor: pointer;
     }
 </style>
@@ -53,7 +53,35 @@
 
 <audio id="myAudio" src="https://www.myinstants.com/media/sounds/happy-happy-happy-cat.mp3"></audio>
 
+
+
 <script>
+    function replaceEmptyStringWithHolder(str, holder) {
+        if (str === null || str === "") {
+            return holder;
+        }
+        return str;
+    }
+
+
+    const playButton = document.getElementById('play-button')
+
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+
+    const buttonText = replaceEmptyStringWithHolder(urlParams.get("btxt"), "▶️ Play");
+    const buttonColour = replaceEmptyStringWithHolder(urlParams.get("bcol"), "#99005e");
+    const textColour = replaceEmptyStringWithHolder(urlParams.get("tcol"), "#ffffff");
+    const gifLink = replaceEmptyStringWithHolder(urlParams.get("gif"), "https://www.icegif.com/wp-content/uploads/2023/06/icegif-948.gif");
+    const audioLink = replaceEmptyStringWithHolder(urlParams.get("audio"), "https://www.myinstants.com/media/sounds/happy-happy-happy-cat.mp3");
+
+
+    playButton.innerText = buttonText;
+    playButton.style.backgroundColor = buttonColour;
+    playButton.style.color = textColour;
+
+    myAudio.src = audioLink;
+
     document.getElementById('play-button').onclick = function() {
         // Проигрываем песню
         document.getElementById('myAudio').load();
@@ -62,7 +90,7 @@
         // Загружаем и отображаем GIF
         var gifContainer = document.getElementById('gif-container');
         var gifImage = document.createElement('img');
-        gifImage.src = 'https://www.icegif.com/wp-content/uploads/2023/06/icegif-948.gif'; // Замените на ссылку на ваше GIF-изображение
+        gifImage.src = gifLink; // Замените на ссылку на ваше GIF-изображение
         gifImage.style.maxWidth = '100%';
         gifContainer.innerHTML = ''; // Очищаем контейнер перед добавлением нового изображения
         gifContainer.appendChild(gifImage);
