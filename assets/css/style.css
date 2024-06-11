@@ -910,7 +910,25 @@ a:hover {
 }
 
 .work-box:hover img {
-  transform: scale(1.3);
+  /* transform: scale(1.2); */
+  filter: brightness(80%);
+}
+
+.work-box img {
+  filter: brightness(50%);
+}
+
+.list-img {
+  max-height: 200px;
+  transition: max-height 0.5s ease-out;
+  overflow: hidden;
+
+}
+
+.list-img:hover {
+  max-height: 1000px;
+  transition: max-height 1s ease-in;
+  overflow: hidden;
 }
 
 .work-img {
