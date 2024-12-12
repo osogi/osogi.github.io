@@ -1,114 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GIF & Sound</title>
-<style>
-    body {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        /* justify-content: center; */
-        height: 100vh;
-        margin: 0;
-    }
-    .gif-container {
-        max-width: 400px;
-        margin: 20px;
-    }
-    .play-button {
-        padding: 10px 20px;
-        font-size: 16px;
-        border: none;
-        background-color: #66085e;
-        color: #ffffff;
-        border-radius: 10px;
-        cursor: pointer;
-        box-shadow: 0 5px #999;
-    }
-
-
-    .play-button:hover {
-        filter: brightness(90%);
-    }
-
-    .play-button:active {
-        filter: brightness(80%);
-        box-shadow: 0 2px #666;
-        transform: translateY(3px);
-    }
-</style>
-</head>
-<body>
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript" >
-    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-    m[i].l=1*new Date();
-    for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
- 
-    ym(97538367, "init", {
-         clickmap:true,
-         trackLinks:true,
-         accurateTrackBounce:true,
-         webvisor:true
-    });
- </script>
- <noscript><div><img src="https://mc.yandex.ru/watch/97538367" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
- <!-- /Yandex.Metrika counter -->
-
-<button id="play-button" class="play-button">🎉 Happy-happy 🎉</button>
-<div id="gif-container" class="gif-container">
-    <!-- Изображение GIF будет загружаться динамически -->
-</div>
-
-<audio id="myAudio" src="https://www.myinstants.com/media/sounds/happy-happy-happy-cat.mp3"></audio>
-
-
-
-<script>
-    function replaceEmptyStringWithHolder(str, holder) {
-        if (str === null || str === "") {
-            return holder;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIF & Sound</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* justify-content: center; */
+            height: 100vh;
+            margin: 0;
         }
-        return str;
-    }
+
+        .gif-container {
+            max-width: 400px;
+            margin: 20px;
+        }
+
+        .play-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #66085e;
+            color: #ffffff;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 5px #999;
+        }
 
 
-    const playButton = document.getElementById('play-button')
+        .play-button:hover {
+            filter: brightness(90%);
+        }
 
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
+        .play-button:active {
+            filter: brightness(80%);
+            box-shadow: 0 2px #666;
+            transform: translateY(3px);
+        }
+    </style>
+</head>
 
-    const buttonText = replaceEmptyStringWithHolder(urlParams.get("btxt"), "▶️ Play");
-    const buttonColour = replaceEmptyStringWithHolder(urlParams.get("bcol"), "#99005e");
-    const textColour = replaceEmptyStringWithHolder(urlParams.get("tcol"), "#ffffff");
-    const gifLink = replaceEmptyStringWithHolder(urlParams.get("gif"), "https://www.icegif.com/wp-content/uploads/2023/06/icegif-948.gif");
-    const audioLink = replaceEmptyStringWithHolder(urlParams.get("audio"), "https://www.myinstants.com/media/sounds/happy-happy-happy-cat.mp3");
+<body>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+            m[i].l = 1 * new Date();
+            for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })
+            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(97538367, "init", {
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true,
+            webvisor: true
+        });
+    </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/97538367" style="position:absolute; left:-9999px;" alt /></div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
+
+    <button id="play-button" class="play-button"></button>
+    <div id="gif-container" class="gif-container"></div>
+
+    <audio id="myAudio" src="some-link"></audio>
+
+    <script>
+        function replaceEmptyStringWithHolder(str, holder) {
+            if (str === null || str === "") {
+                return holder;
+            }
+            return str;
+        }
 
 
-    playButton.innerText = buttonText;
-    playButton.style.backgroundColor = buttonColour;
-    playButton.style.color = textColour;
+        const playButton = document.getElementById('play-button')
 
-    myAudio.src = audioLink;
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
 
-    document.getElementById('play-button').onclick = function() {
-        // Проигрываем песню
-        document.getElementById('myAudio').load();
-        document.getElementById('myAudio').play();
-        
-        // Загружаем и отображаем GIF
-        var gifContainer = document.getElementById('gif-container');
-        var gifImage = document.createElement('img');
-        gifImage.src = gifLink; // Замените на ссылку на ваше GIF-изображение
-        gifImage.style.maxWidth = '100%';
-        gifContainer.innerHTML = ''; // Очищаем контейнер перед добавлением нового изображения
-        gifContainer.appendChild(gifImage);
-    };
-</script>
+        const buttonText = replaceEmptyStringWithHolder(urlParams.get("btxt"), "▶️ Play");
+        const buttonColour = replaceEmptyStringWithHolder(urlParams.get("bcol"), "#99005e");
+        const textColour = replaceEmptyStringWithHolder(urlParams.get("tcol"), "#ffffff");
+        const gifLink = replaceEmptyStringWithHolder(urlParams.get("gif"), "https://github.com/user-attachments/assets/4606aebe-904d-41e5-bf20-b18fb02390b1");
+        const audioLink = replaceEmptyStringWithHolder(urlParams.get("audio"), "https://github.com/user-attachments/assets/0593f269-3e87-42fd-9b94-bf518fc85bdb");
+
+
+        playButton.innerText = buttonText;
+        playButton.style.backgroundColor = buttonColour;
+        playButton.style.color = textColour;
+
+        myAudio.src = audioLink;
+
+        document.getElementById('play-button').onclick = function () {
+            document.getElementById('myAudio').load();
+            document.getElementById('myAudio').play();
+
+            var gifContainer = document.getElementById('gif-container');
+            var gifImage = document.createElement('img');
+
+
+            gifImage.src = gifLink;
+            gifImage.style.maxWidth = '100%';
+
+            gifContainer.innerHTML = ''; // this gif reload don't work any more :()
+            gifContainer.appendChild(gifImage);
+
+        };
+    </script>
 
 </body>
+
 </html>
